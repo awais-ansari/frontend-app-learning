@@ -1,0 +1,315 @@
+/**
+ * LTI Panel Styles
+ * Rich, attractive panel UI for the LTI external tools sidebar widget.
+ */
+
+/* ─── Panel wrapper ────────────────────────────────────────────────── */
+.lti-panel {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0 0 1rem;
+    overflow-y: auto;
+  }
+
+  /* ─── Hero Header ─────────────────────────────────────────────── */
+  &__hero {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1rem 1rem;
+    background: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 60%, #06b6d4 100%);
+    position: relative;
+    overflow: hidden;
+
+    /* Decorative circles in the background */
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &::before {
+      width: 7rem;
+      height: 7rem;
+      top: -3rem;
+      right: -2rem;
+    }
+
+    &::after {
+      width: 4rem;
+      height: 4rem;
+      bottom: -1.5rem;
+      left: 0.5rem;
+    }
+  }
+
+  &__hero-icon-ring {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+
+    .lti-panel__hero-icon {
+      color: #ffffff;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__hero-text {
+    flex: 1;
+    z-index: 1;
+  }
+
+  &__hero-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.1rem;
+    line-height: 1.2;
+  }
+
+  &__hero-subtitle {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  &__version-badge {
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+    letter-spacing: 0.06em;
+    z-index: 1;
+  }
+
+  /* ─── Description ─────────────────────────────────────────────── */
+  &__description {
+    font-size: 0.8rem;
+    color: #4b5563;
+    line-height: 1.55;
+    margin: 0;
+    padding: 0.875rem 1rem 0;
+  }
+
+  /* ─── Connection status bar ────────────────────────────────────── */
+  &__status-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.625rem 1rem 0;
+    padding: 0.4rem 0.75rem;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 6px;
+  }
+
+  &__status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #10b981;
+    flex-shrink: 0;
+    animation: lti-status-pulse 2.5s ease-in-out infinite;
+  }
+
+  &__status-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #065f46;
+    letter-spacing: 0.01em;
+  }
+
+  /* ─── Divider ─────────────────────────────────────────────────── */
+  &__divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e5e7eb 15%, #e5e7eb 85%, transparent);
+    margin: 1rem 0 0;
+  }
+
+  /* ─── Tools section ───────────────────────────────────────────── */
+  &__tools {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 0.75rem 1rem;
+  }
+
+  &__tools-heading {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    margin: 0 0 0.25rem;
+  }
+
+  /* ─── Footer ──────────────────────────────────────────────────── */
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.625rem 1rem;
+    border-top: 1px solid #f3f4f6;
+    color: #9ca3af;
+    font-size: 0.65rem;
+    letter-spacing: 0.03em;
+
+    .lti-panel__footer-icon {
+      width: 0.75rem;
+      height: 0.75rem;
+      color: #9ca3af;
+    }
+  }
+}
+
+/* ─── Tool Card ────────────────────────────────────────────────────── */
+.lti-tool-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: #c4b5fd;
+    transform: translateY(-1px);
+  }
+
+  &__icon-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 8px;
+  }
+
+  &__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__description {
+    font-size: 0.7rem;
+    color: #6b7280;
+    line-height: 1.45;
+    margin: 0 0 0.5rem;
+  }
+
+  &__launch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--lti-tool-color, #3b82f6);
+    background: none;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    padding: 0.2rem 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background-color: var(--lti-tool-color, #3b82f6);
+      color: #ffffff;
+    }
+
+    .lti-tool-card__launch-icon {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+  }
+}
+
+/* ─── Status badges ────────────────────────────────────────────────── */
+.lti-tool-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  &__icon {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+
+  &--active {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+  }
+
+  &--available {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+  }
+
+  &--completed {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+}
+
+/* ─── Animations ───────────────────────────────────────────────────── */
+@keyframes lti-status-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
